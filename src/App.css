@@ -350,3 +350,139 @@
   color: #374151;
   font-size: 12px;
 }
+
+
+/* =================================
+   デザイン改善：全体レイアウト
+================================= */
+
+/* アプリ全体の横幅 */
+.app {
+  max-width: 860px;
+  padding: 48px 32px;
+}
+
+/* ヘッダー */
+.app-header {
+  margin-bottom: 36px;
+}
+
+/* Todo一覧の見出し */
+.todo-heading {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.todo-heading h2 {
+  font-size: 22px;
+}
+
+.todo-heading > span {
+  margin-left: -8px;
+}
+
+/* 並び替えと一括削除 */
+.sort-select {
+  padding: 8px 12px;
+  border-radius: 7px;
+  font-size: 13px;
+}
+
+.delete-completed-button {
+  margin-left: auto;
+  padding: 8px 14px;
+  border-radius: 7px;
+}
+
+/* =================================
+   デザイン改善：Todo一覧
+================================= */
+
+.todo-list {
+  gap: 12px;
+}
+
+/* Todo一件分をカード化 */
+.todo-item {
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(15, 23, 42, 0.03);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* マウスを乗せたとき */
+.todo-item:hover {
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.07);
+  transform: translateY(-1px);
+}
+
+/* Todoのタイトル */
+.todo-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Todoの詳細 */
+.todo-details {
+  gap: 16px;
+}
+
+/* 完了済みTodo */
+.todo-item.completed {
+  background-color: #f9fafb;
+  box-shadow: none;
+}
+
+.todo-item.completed .todo-title {
+  color: #9ca3af;
+}
+
+/* =================================
+   デザイン改善：スマートフォン対応
+================================= */
+
+@media (max-width: 600px) {
+  .app {
+    padding: 28px 16px;
+  }
+
+  .app-header {
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .todo-heading {
+    gap: 8px;
+  }
+
+  .todo-heading h2 {
+    font-size: 19px;
+  }
+
+  .delete-completed-button {
+    margin-left: 0;
+  }
+
+  .todo-item {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 14px 12px;
+  }
+
+  .todo-content {
+    flex: 1 1 calc(100% - 40px);
+  }
+
+  .edit-button,
+  .delete-button {
+    margin-left: 28px;
+  }
+}
