@@ -1,75 +1,72 @@
-# React + TypeScript + Vite
+# TodoApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**公開URL：** https://kkotaro0840.github.io/todo-app/
 
-Currently, two official plugins are available:
+## 1. アプリの概要
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+TodoAppは、日々のタスクを簡単に管理するためのWebアプリケーションです。
 
-## React Compiler
+Todoの追加や編集、削除に加え、優先度や期限を設定することで、タスクの重要性や取り組む順番を整理できます。
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+シンプルで見やすいデザインを目指し、日常的に使いやすいTodoアプリを制作しました。
 
-## Expanding the ESLint configuration
+## 2. 主な機能
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Todoの追加・編集・削除**：タスクの登録や内容の変更、不要になったタスクの削除ができます。
+- **優先度の設定**：各Todoに3段階の優先度を設定できます。
+- **期限の設定**：タスクごとに期限を設定できます。期限を設定しないことも可能です。
+- **並べ替え**：優先度順または期限順にTodoを並べ替えられます。
+- **完了状態の管理**：チェックボックスでTodoの完了・未完了を切り替えられます。
+- **完了済みTodoの一括削除**：完了したTodoをまとめて削除できます。
+- **期限切れの表示**：未完了のまま期限を過ぎたTodoは、通常とは異なる表示になります。
+- **データの保存**：ブラウザのlocalStorageを利用し、ページを再読み込みしてもTodoの情報を保持します。
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 3. 工夫した点・特徴
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Todoの優先度と期限を設定できるようにすることで、単にタスクを記録するだけでなく、取り組む順番を整理できるようにしました。
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+また、期限を過ぎた未完了のTodoを通常のTodoと区別して表示することで、対応が必要なタスクを見つけやすくしています。
 
-```
+データの保存にはlocalStorageを使用し、ブラウザを再読み込みしても登録したTodoが消えないようにしました。
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## 4. 開発で苦労した点
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+<!-- 実際に苦労したことや、解決するために工夫したことを記入 -->
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 5. 使用技術
 
-```
+- React
+- TypeScript
+- Vite
+- HTML
+- CSS
+- localStorage
+- Git / GitHub
+- GitHub Pages
+
+## 6. スクリーンショット
+
+他のTodoアプリとの差別化を図ろうとしたことが、開発中に苦労した点です。
+
+独自性のある機能を追加しようと考えましたが、アイデアを思いついても、それを実現するためにどのようなコードを書けばよいのか分からず、開発方針に迷うことがありました。
+
+そのため、最終的にはTodoアプリとして必要な機能を一つずつ実装し、使いやすさを重視したアプリケーションを目指しました。
+
+### Todo一覧画面
+![Todo一覧画面](./screenshots/todo-list.png)
+
+### Todo追加画面
+![Todo追加画面](./screenshots/todo-add.png)
+
+### Todo編集画面
+![Todo編集画面](./screenshots/todo-edit.png)
+
+### 並べ替え画面
+![並べ替え画面](./screenshots/todo-sort.png)
+
+### 期限切れTodoの表示
+![期限切れTodoの表示](./screenshots/todo-overdue.png)
+
+## 7. 開発期間・開発時間
+
+開発期間：2026年11月18日 ～ 同年同月19日（約17時間）
