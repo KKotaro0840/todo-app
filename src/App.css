@@ -1,0 +1,352 @@
+
+/* アプリ全体 */
+.app {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* ヘッダー */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.app-header p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Todo一覧 */
+.todo-section {
+  width: 100%;
+}
+
+.todo-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.todo-heading h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #111827;
+}
+
+.todo-heading > span {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Todo一件分 */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.todo-item input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: #2563eb;
+  flex-shrink: 0;
+}
+
+.todo-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-title {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+  overflow-wrap: anywhere;
+}
+
+/* 優先度・期限 */
+.todo-details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.priority {
+  color: #6b7280;
+}
+
+.stars {
+  margin-left: 8px;
+  color: #f97316;
+  letter-spacing: 2px;
+}
+
+.due-date {
+  color: #6b7280;
+}
+
+.overdue {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.no-deadline {
+  color: #9ca3af;
+}
+
+/* 完了済みTodo */
+.todo-item.completed .todo-title {
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.todo-item.completed .stars {
+  color: #d1d5db;
+}
+
+/* スマートフォン対応 */
+@media (max-width: 600px) {
+  .app {
+    padding: 24px 16px;
+  }
+
+  .app-header h1 {
+    font-size: 24px;
+  }
+
+  .todo-item {
+    padding: 12px 4px;
+  }
+}
+
+/* Todo追加ボタン */
+.add-button {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2563eb;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.add-button:hover {
+  background-color: #1d4ed8;
+}
+
+/* 編集ボタン */
+.edit-button {
+  padding: 6px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  background: white;
+  color: #374151;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.edit-button:hover {
+  background-color: #f3f4f6;
+}
+
+/* モーダルの背景 */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* モーダル本体 */
+.modal {
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.modal h2 {
+  margin: 0 0 24px;
+  font-size: 21px;
+  color: #111827;
+}
+
+/* 入力項目 */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-group input {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #111827;
+}
+
+.form-group input:focus {
+  outline: 2px solid #93c5fd;
+  border-color: #2563eb;
+}
+
+/* 優先度選択 */
+.priority-select {
+  display: flex;
+  gap: 10px;
+}
+
+.priority-select button {
+  padding: 5px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  color: #d1d5db;
+  font-size: 19px;
+}
+
+.priority-select button.selected {
+  border-color: #f97316;
+  background: #fff7ed;
+  color: #f97316;
+}
+
+/* 期限リセット */
+.reset-button {
+  align-self: flex-start;
+  padding: 4px 0;
+  border: none;
+  background: none;
+  color: #6b7280;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+/* モーダル操作ボタン */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.modal-actions button {
+  padding: 9px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cancel-button {
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
+}
+
+.save-button {
+  border: 1px solid #2563eb;
+  background: #2563eb;
+  color: white;
+}
+
+.save-button:hover {
+  background: #1d4ed8;
+}
+
+/* スマートフォン対応 */
+@media (max-width: 600px) {
+  .add-button {
+    padding: 8px 11px;
+    font-size: 12px;
+  }
+
+  .modal {
+    padding: 22px 18px;
+  }
+}
+
+.delete-button {
+  padding: 6px 12px;
+  border: 1px solid #fecaca;
+  border-radius: 5px;
+  background: white;
+  color: #dc2626;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.delete-button:hover {
+  background-color: #fef2f2;
+}
+
+.delete-completed-button {
+  margin-left: auto;
+  padding: 7px 12px;
+  border: 1px solid #fecaca;
+  border-radius: 5px;
+  background: white;
+  color: #dc2626;
+  font-size: 12px;
+}
+
+.delete-completed-button:hover:not(:disabled) {
+  background-color: #fef2f2;
+}
+
+.delete-completed-button:disabled {
+  color: #9ca3af;
+  border-color: #e5e7eb;
+  cursor: not-allowed;
+}
+
+.sort-select {
+  padding: 7px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  background: white;
+  color: #374151;
+  font-size: 12px;
+}

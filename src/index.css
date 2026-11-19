@@ -1,0 +1,48 @@
+
+/* アプリ全体の基本設定 */
+:root {
+  font-family:
+    "Noto Sans JP",
+    "Yu Gothic UI",
+    Meiryo,
+    sans-serif;
+
+  color: #1f2937;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* すべての要素のサイズ計算を統一 */
+* {
+  box-sizing: border-box;
+}
+
+/* ページ全体 */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* Reactの表示領域 */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ボタンの基本設定 */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* 入力欄の基本設定 */
+input,
+select,
+textarea {
+  font-family: inherit;
+}
