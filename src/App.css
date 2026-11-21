@@ -740,3 +740,57 @@
     flex: 1;
   }
 }
+
+/* =================================
+  モーダルの高さ・余白の最終調整
+================================= */
+
+/* モーダル本体 */
+.modal {
+  max-height: calc(100vh - 32px);
+  padding: 26px 30px;
+  overflow-y: auto;
+}
+
+/* 見出し */
+.modal h2 {
+  margin-bottom: 20px;
+}
+
+/* 入力項目 */
+.form-group {
+  gap: 8px;
+  margin-bottom: 17px;
+}
+
+/* 入力欄 */
+.form-group input {
+  padding: 10px 12px;
+}
+
+/* 優先度カード */
+.priority-select button {
+  min-height: 62px;
+  gap: 4px;
+}
+
+/* 操作ボタン */
+.modal-actions {
+  margin-top: 22px;
+}
+
+/* スマートフォン対応 */
+@media (max-width: 600px) {
+  .modal {
+    max-height: calc(100vh - 24px);
+    padding: 22px 18px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .modal-actions {
+    margin-top: 22px;
+  }
+}
