@@ -1,18 +1,16 @@
-
-/* アプリ全体 */
 .app {
   width: 100%;
-  max-width: 640px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 48px 32px;
 }
 
-/* ヘッダー */
 .app-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  gap: 12px;
+  margin-bottom: 36px;
 }
 
 .app-header h1 {
@@ -28,42 +26,97 @@
   color: #6b7280;
 }
 
-/* Todo一覧 */
+.add-button {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2563eb;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.add-button:hover {
+  background-color: #1d4ed8;
+}
+
 .todo-section {
   width: 100%;
 }
 
 .todo-heading {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .todo-heading h2 {
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
   color: #111827;
 }
 
 .todo-heading > span {
+  margin-left: -8px;
   font-size: 13px;
   color: #6b7280;
 }
 
-/* Todo一件分 */
+.sort-select {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  background: white;
+  color: #374151;
+  font-size: 13px;
+}
+
+.delete-completed-button {
+  margin-left: auto;
+  padding: 8px 14px;
+  border: 1px solid #fecaca;
+  border-radius: 7px;
+  background: white;
+  color: #dc2626;
+  font-size: 12px;
+}
+
+.delete-completed-button:hover:not(:disabled) {
+  background-color: #fef2f2;
+}
+
+.delete-completed-button:disabled {
+  color: #9ca3af;
+  border-color: #e5e7eb;
+  cursor: not-allowed;
+}
+
 .todo-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .todo-item {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 14px 12px;
-  border-bottom: 1px solid #e5e7eb;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(15, 23, 42, 0.03);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.todo-item:hover {
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.07);
+  transform: translateY(-1px);
 }
 
 .todo-item input {
@@ -82,35 +135,66 @@
 .todo-title {
   margin: 0 0 6px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   color: #111827;
   overflow-wrap: anywhere;
 }
 
-/* 優先度・期限 */
 .todo-details {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  margin-top: 8px;
   font-size: 13px;
 }
 
-.priority {
-  color: #6b7280;
+.priority-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priority-label {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 9px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.priority-3 {
+  color: #dc2626;
+  background-color: #fef2f2;
+}
+
+.priority-2 {
+  color: #c2410c;
+  background-color: #fff7ed;
+}
+
+.priority-1 {
+  color: #15803d;
+  background-color: #f0fdf4;
 }
 
 .stars {
-  margin-left: 8px;
+  margin-left: 0;
   color: #f97316;
   letter-spacing: 2px;
+}
+
+.deadline-info {
+  font-size: 13px;
 }
 
 .due-date {
   color: #6b7280;
 }
 
-.overdue {
+.deadline-info .overdue {
   color: #ef4444;
   font-weight: 600;
 }
@@ -119,7 +203,11 @@
   color: #9ca3af;
 }
 
-/* 完了済みTodo */
+.todo-item.completed {
+  background-color: #f9fafb;
+  box-shadow: none;
+}
+
 .todo-item.completed .todo-title {
   color: #9ca3af;
   text-decoration: line-through;
@@ -129,52 +217,39 @@
   color: #d1d5db;
 }
 
-/* スマートフォン対応 */
-@media (max-width: 600px) {
-  .app {
-    padding: 24px 16px;
-  }
-
-  .app-header h1 {
-    font-size: 24px;
-  }
-
-  .todo-item {
-    padding: 12px 4px;
-  }
+.todo-item.completed .priority-label {
+  color: #9ca3af;
+  background-color: #f3f4f6;
 }
 
-/* Todo追加ボタン */
-.add-button {
-  padding: 9px 16px;
-  border: none;
-  border-radius: 6px;
-  background-color: #2563eb;
-  color: white;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.add-button:hover {
-  background-color: #1d4ed8;
-}
-
-/* 編集ボタン */
-.edit-button {
+.edit-button,
+.delete-button {
   padding: 6px 12px;
-  border: 1px solid #d1d5db;
   border-radius: 5px;
-  background: white;
-  color: #374151;
   font-size: 13px;
   flex-shrink: 0;
+}
+
+.edit-button {
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
 }
 
 .edit-button:hover {
   background-color: #f3f4f6;
 }
 
-/* モーダルの背景 */
+.delete-button {
+  border: 1px solid #fecaca;
+  background: white;
+  color: #dc2626;
+}
+
+.delete-button:hover {
+  background-color: #fef2f2;
+}
+
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -183,38 +258,39 @@
   justify-content: center;
   align-items: center;
   padding: 16px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(3px);
 }
 
-/* モーダル本体 */
 .modal {
   width: 100%;
-  max-width: 420px;
-  max-height: 90vh;
+  max-width: 460px;
+  max-height: calc(100vh - 32px);
   overflow-y: auto;
-  padding: 28px;
-  border-radius: 12px;
+  padding: 26px 30px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
   background: white;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
 }
 
 .modal h2 {
-  margin: 0 0 24px;
-  font-size: 21px;
+  margin: 0 0 20px;
+  font-size: 23px;
+  font-weight: 700;
   color: #111827;
 }
 
-/* 入力項目 */
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 17px;
 }
 
 .form-group label {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   color: #374151;
 }
 
@@ -223,67 +299,127 @@
   min-width: 0;
   padding: 10px 12px;
   border: 1px solid #d1d5db;
-  border-radius: 6px;
+  border-radius: 8px;
+  background: #ffffff;
   font-size: 14px;
   color: #111827;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .form-group input:focus {
-  outline: 2px solid #93c5fd;
+  outline: none;
   border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
-/* 優先度選択 */
 .priority-select {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
 
 .priority-select button {
-  padding: 5px 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  background: white;
-  color: #d1d5db;
-  font-size: 19px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 62px;
+  padding: 10px 6px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #ffffff;
+  transition: all 0.2s;
 }
 
-.priority-select button.selected {
+.priority-option-label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.priority-option-stars {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.priority-option-1 {
+  color: #15803d !important;
+}
+
+.priority-select button.priority-option-1.selected {
+  border-color: #16a34a;
+  background: #f0fdf4;
+}
+
+.priority-option-2 {
+  color: #c2410c !important;
+}
+
+.priority-select button.priority-option-2.selected {
   border-color: #f97316;
   background: #fff7ed;
-  color: #f97316;
 }
 
-/* 期限リセット */
+.priority-option-3 {
+  color: #dc2626 !important;
+}
+
+.priority-select button.priority-option-3.selected {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.priority-select button:hover {
+  border-color: #9ca3af;
+  transform: translateY(-2px);
+}
+
+.priority-select button.selected:hover {
+  border-width: 2px;
+}
+
 .reset-button {
   align-self: flex-start;
   padding: 4px 0;
   border: none;
   background: none;
   color: #6b7280;
-  font-size: 12px;
+  font-size: 13px;
   text-decoration: underline;
 }
 
-/* モーダル操作ボタン */
+.reset-button:hover {
+  color: #2563eb;
+}
+
 .modal-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
-  margin-top: 28px;
+  gap: 12px;
+  margin-top: 22px;
 }
 
 .modal-actions button {
-  padding: 9px 18px;
-  border-radius: 6px;
+  min-width: 100px;
+  padding: 11px 20px;
+  border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
 }
 
 .cancel-button {
   border: 1px solid #d1d5db;
   background: white;
   color: #374151;
+}
+
+.cancel-button:hover {
+  background: #f3f4f6;
 }
 
 .save-button {
@@ -294,160 +430,8 @@
 
 .save-button:hover {
   background: #1d4ed8;
-}
-
-/* スマートフォン対応 */
-@media (max-width: 600px) {
-  .add-button {
-    padding: 8px 11px;
-    font-size: 12px;
-  }
-
-  .modal {
-    padding: 22px 18px;
-  }
-}
-
-.delete-button {
-  padding: 6px 12px;
-  border: 1px solid #fecaca;
-  border-radius: 5px;
-  background: white;
-  color: #dc2626;
-  font-size: 13px;
-  flex-shrink: 0;
-}
-
-.delete-button:hover {
-  background-color: #fef2f2;
-}
-
-.delete-completed-button {
-  margin-left: auto;
-  padding: 7px 12px;
-  border: 1px solid #fecaca;
-  border-radius: 5px;
-  background: white;
-  color: #dc2626;
-  font-size: 12px;
-}
-
-.delete-completed-button:hover:not(:disabled) {
-  background-color: #fef2f2;
-}
-
-.delete-completed-button:disabled {
-  color: #9ca3af;
-  border-color: #e5e7eb;
-  cursor: not-allowed;
-}
-
-.sort-select {
-  padding: 7px 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 5px;
-  background: white;
-  color: #374151;
-  font-size: 12px;
-}
-
-
-/* =================================
-   デザイン改善：全体レイアウト
-================================= */
-
-/* アプリ全体の横幅 */
-.app {
-  max-width: 860px;
-  padding: 48px 32px;
-}
-
-/* ヘッダー */
-.app-header {
-  margin-bottom: 36px;
-}
-
-/* Todo一覧の見出し */
-.todo-heading {
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.todo-heading h2 {
-  font-size: 22px;
-}
-
-.todo-heading > span {
-  margin-left: -8px;
-}
-
-/* 並び替えと一括削除 */
-.sort-select {
-  padding: 8px 12px;
-  border-radius: 7px;
-  font-size: 13px;
-}
-
-.delete-completed-button {
-  margin-left: auto;
-  padding: 8px 14px;
-  border-radius: 7px;
-}
-
-/* =================================
-   デザイン改善：Todo一覧
-================================= */
-
-.todo-list {
-  gap: 12px;
-}
-
-/* Todo一件分をカード化 */
-.todo-item {
-  align-items: center;
-  gap: 16px;
-  padding: 18px 20px;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 5px rgba(15, 23, 42, 0.03);
-  transition:
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
-}
-
-/* マウスを乗せたとき */
-.todo-item:hover {
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.07);
   transform: translateY(-1px);
 }
-
-/* Todoのタイトル */
-.todo-title {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-/* Todoの詳細 */
-.todo-details {
-  gap: 16px;
-}
-
-/* 完了済みTodo */
-.todo-item.completed {
-  background-color: #f9fafb;
-  box-shadow: none;
-}
-
-.todo-item.completed .todo-title {
-  color: #9ca3af;
-}
-
-/* =================================
-   デザイン改善：スマートフォン対応
-================================= */
 
 @media (max-width: 600px) {
   .app {
@@ -455,8 +439,16 @@
   }
 
   .app-header {
-    gap: 12px;
     margin-bottom: 28px;
+  }
+
+  .app-header h1 {
+    font-size: 24px;
+  }
+
+  .add-button {
+    padding: 8px 11px;
+    font-size: 12px;
   }
 
   .todo-heading {
@@ -485,241 +477,10 @@
   .delete-button {
     margin-left: 28px;
   }
-}
 
-
-/* 優先度ラベルの共通設定 */
-.priority-label {
-  display: inline-block;
-  margin-left: 8px;
-  padding: 2px 9px;
-  border-radius: 5px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-/* 優先度：高 */
-.priority-3 {
-  color: #dc2626;
-  background-color: #fef2f2;
-}
-
-/* 優先度：中 */
-.priority-2 {
-  color: #c2410c;
-  background-color: #fff7ed;
-}
-
-/* 優先度：低 */
-.priority-1 {
-  color: #15803d;
-  background-color: #f0fdf4;
-}
-
-/* 完了済みTodoのラベル */
-.todo-item.completed .priority-label {
-  color: #9ca3af;
-  background-color: #f3f4f6;
-}
-
-
-/* Todoの詳細情報を整理 */
-.todo-details {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 7px;
-  margin-top: 8px;
-}
-
-/* 優先度 */
-.priority-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* 星の表示 */
-.priority-info .stars {
-  margin-left: 0;
-}
-
-/* 期限 */
-.deadline-info {
-  font-size: 13px;
-}
-
-/* 期限切れ */
-.deadline-info .overdue {
-  color: #ef4444;
-  font-weight: 600;
-}
-
-/* 期限なし */
-.deadline-info .no-deadline {
-  color: #9ca3af;
-}
-
-
-/* =================================
-   モーダルのデザイン改善
-================================= */
-
-/* 背景 */
-.modal-overlay {
-  background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(3px);
-}
-
-/* モーダル本体 */
-.modal {
-  max-width: 460px;
-  padding: 32px;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
-}
-
-/* 見出し */
-.modal h2 {
-  margin-bottom: 28px;
-  font-size: 23px;
-  font-weight: 700;
-}
-
-/* 入力項目 */
-.form-group {
-  gap: 10px;
-  margin-bottom: 24px;
-}
-
-.form-group label {
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.form-group input {
-  padding: 12px 14px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  background: #ffffff;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
-}
-
-/* 優先度選択 */
-.priority-select {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.priority-select button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  min-height: 72px;
-  padding: 10px 6px;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  background: #ffffff;
-  transition: all 0.2s;
-}
-
-.priority-option-label {
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.priority-option-stars {
-  font-size: 14px;
-  letter-spacing: 1px;
-}
-
-/* 優先度：低 */
-.priority-option-1 {
-  color: #15803d !important;
-}
-
-.priority-select button.priority-option-1.selected {
-  border-color: #16a34a;
-  background: #f0fdf4;
-}
-
-/* 優先度：中 */
-.priority-option-2 {
-  color: #c2410c !important;
-}
-
-.priority-select button.priority-option-2.selected {
-  border-color: #f97316;
-  background: #fff7ed;
-}
-
-/* 優先度：高 */
-.priority-option-3 {
-  color: #dc2626 !important;
-}
-
-.priority-select button.priority-option-3.selected {
-  border-color: #dc2626;
-  background: #fef2f2;
-}
-
-/* ホバー */
-.priority-select button:hover {
-  border-color: #9ca3af;
-  transform: translateY(-2px);
-}
-
-/* 選択中のボタンはホバー時も色を維持 */
-.priority-select button.selected:hover {
-  border-width: 2px;
-}
-
-/* 期限リセット */
-.reset-button {
-  font-size: 13px;
-}
-
-.reset-button:hover {
-  color: #2563eb;
-}
-
-/* 操作ボタン */
-.modal-actions {
-  gap: 12px;
-  margin-top: 32px;
-}
-
-.modal-actions button {
-  min-width: 100px;
-  padding: 11px 20px;
-  border-radius: 8px;
-  transition: background-color 0.2s, transform 0.2s;
-}
-
-.cancel-button:hover {
-  background: #f3f4f6;
-}
-
-.save-button:hover {
-  background: #1d4ed8;
-  transform: translateY(-1px);
-}
-
-/* スマートフォン対応 */
-@media (max-width: 600px) {
   .modal {
-    padding: 24px 20px;
+    max-height: calc(100vh - 24px);
+    padding: 22px 18px;
     border-radius: 14px;
   }
 
@@ -738,52 +499,6 @@
   .modal-actions button {
     min-width: 0;
     flex: 1;
-  }
-}
-
-/* =================================
-  モーダルの高さ・余白の最終調整
-================================= */
-
-/* モーダル本体 */
-.modal {
-  max-height: calc(100vh - 32px);
-  padding: 26px 30px;
-  overflow-y: auto;
-}
-
-/* 見出し */
-.modal h2 {
-  margin-bottom: 20px;
-}
-
-/* 入力項目 */
-.form-group {
-  gap: 8px;
-  margin-bottom: 17px;
-}
-
-/* 入力欄 */
-.form-group input {
-  padding: 10px 12px;
-}
-
-/* 優先度カード */
-.priority-select button {
-  min-height: 62px;
-  gap: 4px;
-}
-
-/* 操作ボタン */
-.modal-actions {
-  margin-top: 22px;
-}
-
-/* スマートフォン対応 */
-@media (max-width: 600px) {
-  .modal {
-    max-height: calc(100vh - 24px);
-    padding: 22px 18px;
   }
 
   .form-group {

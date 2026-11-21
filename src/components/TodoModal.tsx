@@ -1,7 +1,5 @@
+import { useState, type FormEvent } from 'react'
 
-import { useState } from 'react'
-
-// Todoのデータ型
 export type Todo = {
   id: number
   title: string
@@ -10,7 +8,6 @@ export type Todo = {
   completed: boolean
 }
 
-// モーダルに渡すデータ
 type TodoModalProps = {
   initialTodo: Todo | null
   onSave: (data: {
@@ -21,18 +18,12 @@ type TodoModalProps = {
   onClose: () => void
 }
 
-function TodoModal({
-  initialTodo,
-  onSave,
-  onClose,
-}: TodoModalProps) {
-  // 入力フォームの状態
+function TodoModal({ initialTodo, onSave, onClose }: TodoModalProps) {
   const [title, setTitle] = useState(initialTodo?.title ?? '')
   const [priority, setPriority] = useState(initialTodo?.priority ?? 2)
   const [dueDate, setDueDate] = useState(initialTodo?.dueDate ?? '')
 
-  // 入力内容を保存する
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     const trimmedTitle = title.trim()
@@ -51,14 +42,10 @@ function TodoModal({
 
   return (
     <div className="modal-overlay" onMouseDown={onClose}>
-      <div
-        className="modal"
-        onMouseDown={(event) => event.stopPropagation()}
-      >
+      <div className="modal" onMouseDown={(event) => event.stopPropagation()}>
         <h2>{initialTodo ? 'Todoの編集' : 'Todoの追加'}</h2>
 
         <form onSubmit={handleSubmit}>
-          {/* タイトル */}
           <div className="form-group">
             <label htmlFor="todo-title">タイトル</label>
             <input
@@ -73,7 +60,6 @@ function TodoModal({
             />
           </div>
 
-          {/* 優先度 */}
           <div className="form-group">
             <label>優先度</label>
 
@@ -100,10 +86,8 @@ function TodoModal({
             </div>
           </div>
 
-          {/* 期限 */}
           <div className="form-group">
             <label htmlFor="todo-deadline">期限</label>
-
             <input
               id="todo-deadline"
               type="datetime-local"
@@ -120,16 +104,10 @@ function TodoModal({
             </button>
           </div>
 
-          {/* 操作ボタン */}
           <div className="modal-actions">
-            <button
-              type="button"
-              className="cancel-button"
-              onClick={onClose}
-            >
+            <button type="button" className="cancel-button" onClick={onClose}>
               キャンセル
             </button>
-
             <button type="submit" className="save-button">
               OK
             </button>

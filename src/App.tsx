@@ -1,9 +1,7 @@
-
 import { useEffect, useState } from 'react'
 import TodoModal, { type Todo } from './components/TodoModal'
 import './App.css'
 
-// 最初に表示するサンプルデータ
 const initialTodos: Todo[] = [
   {
     id: 1,
@@ -47,60 +45,37 @@ function App() {
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
 
-  // モーダルの表示状態
   const [isModalOpen, setIsModalOpen] = useState(false)
-
-  // 編集対象のTodo
   const [editingTodo, setEditingTodo] = useState<Todo | null>(null)
-
   const [sortType, setSortType] = useState<'priority' | 'deadline'>('priority')
 
-  // 新規作成画面を開く
   const openNewModal = () => {
     setEditingTodo(null)
     setIsModalOpen(true)
   }
 
-  // 編集画面を開く
   const openEditModal = (todo: Todo) => {
     setEditingTodo(todo)
     setIsModalOpen(true)
   }
 
-  // モーダルを閉じる
   const closeModal = () => {
     setIsModalOpen(false)
     setEditingTodo(null)
   }
 
-  const sortedTodos = [...todos].sort((a, b) => {
-    if (sortType === 'priority') {
-      return b.priority - a.priority
-    }
-
-    if (a.dueDate === null) return 1
-    if (b.dueDate === null) return -1
-
-    return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
-  })
-
-  // Todoを保存する
   const saveTodo = (data: {
     title: string
     priority: number
     dueDate: string | null
   }) => {
     if (editingTodo) {
-      // 既存Todoの編集
       setTodos((currentTodos) =>
         currentTodos.map((todo) =>
-          todo.id === editingTodo.id
-            ? { ...todo, ...data }
-            : todo
+          todo.id === editingTodo.id ? { ...todo, ...data } : todo
         )
       )
     } else {
-      // 新しいTodoの追加
       const newTodo: Todo = {
         id: Date.now(),
         ...data,
@@ -113,13 +88,10 @@ function App() {
     closeModal()
   }
 
-  // Todoの完了状態を切り替える
   const toggleTodo = (id: number) => {
     setTodos((currentTodos) =>
       currentTodos.map((todo) =>
-        todo.id === id
-          ? { ...todo, completed: !todo.completed }
-          : todo
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     )
   }
@@ -136,7 +108,17 @@ function App() {
     )
   }
 
-  // 期限を表示用の文字列に変換する
+  const sortedTodos = [...todos].sort((a, b) => {
+    if (sortType === 'priority') {
+      return b.priority - a.priority
+    }
+
+    if (a.dueDate === null) return 1
+    if (b.dueDate === null) return -1
+
+    return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
+  })
+
   const formatDate = (date: string) => {
     return new Intl.DateTimeFormat('ja-JP', {
       year: 'numeric',
@@ -147,7 +129,6 @@ function App() {
     }).format(new Date(date))
   }
 
-  // 期限切れかどうかを判定する
   const isOverdue = (todo: Todo) => {
     return (
       todo.dueDate !== null &&
@@ -207,7 +188,6 @@ function App() {
                 aria-label={`${todo.title}を完了にする`}
               />
 
-              
               <div className="todo-content">
                 <p className="todo-title">{todo.title}</p>
 
@@ -235,13 +215,13 @@ function App() {
                 </div>
               </div>
 
-
               <button
                 className="edit-button"
                 onClick={() => openEditModal(todo)}
               >
                 編集
               </button>
+
               <button
                 className="delete-button"
                 onClick={() => deleteTodo(todo.id)}
