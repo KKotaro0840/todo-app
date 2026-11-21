@@ -486,3 +486,257 @@
     margin-left: 28px;
   }
 }
+
+
+/* 優先度ラベルの共通設定 */
+.priority-label {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 9px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* 優先度：高 */
+.priority-3 {
+  color: #dc2626;
+  background-color: #fef2f2;
+}
+
+/* 優先度：中 */
+.priority-2 {
+  color: #c2410c;
+  background-color: #fff7ed;
+}
+
+/* 優先度：低 */
+.priority-1 {
+  color: #15803d;
+  background-color: #f0fdf4;
+}
+
+/* 完了済みTodoのラベル */
+.todo-item.completed .priority-label {
+  color: #9ca3af;
+  background-color: #f3f4f6;
+}
+
+
+/* Todoの詳細情報を整理 */
+.todo-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  margin-top: 8px;
+}
+
+/* 優先度 */
+.priority-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 星の表示 */
+.priority-info .stars {
+  margin-left: 0;
+}
+
+/* 期限 */
+.deadline-info {
+  font-size: 13px;
+}
+
+/* 期限切れ */
+.deadline-info .overdue {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* 期限なし */
+.deadline-info .no-deadline {
+  color: #9ca3af;
+}
+
+
+/* =================================
+   モーダルのデザイン改善
+================================= */
+
+/* 背景 */
+.modal-overlay {
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(3px);
+}
+
+/* モーダル本体 */
+.modal {
+  max-width: 460px;
+  padding: 32px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
+}
+
+/* 見出し */
+.modal h2 {
+  margin-bottom: 28px;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+/* 入力項目 */
+.form-group {
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.form-group input {
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* 優先度選択 */
+.priority-select {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.priority-select button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 72px;
+  padding: 10px 6px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #ffffff;
+  transition: all 0.2s;
+}
+
+.priority-option-label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.priority-option-stars {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* 優先度：低 */
+.priority-option-1 {
+  color: #15803d !important;
+}
+
+.priority-select button.priority-option-1.selected {
+  border-color: #16a34a;
+  background: #f0fdf4;
+}
+
+/* 優先度：中 */
+.priority-option-2 {
+  color: #c2410c !important;
+}
+
+.priority-select button.priority-option-2.selected {
+  border-color: #f97316;
+  background: #fff7ed;
+}
+
+/* 優先度：高 */
+.priority-option-3 {
+  color: #dc2626 !important;
+}
+
+.priority-select button.priority-option-3.selected {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+/* ホバー */
+.priority-select button:hover {
+  border-color: #9ca3af;
+  transform: translateY(-2px);
+}
+
+/* 選択中のボタンはホバー時も色を維持 */
+.priority-select button.selected:hover {
+  border-width: 2px;
+}
+
+/* 期限リセット */
+.reset-button {
+  font-size: 13px;
+}
+
+.reset-button:hover {
+  color: #2563eb;
+}
+
+/* 操作ボタン */
+.modal-actions {
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.modal-actions button {
+  min-width: 100px;
+  padding: 11px 20px;
+  border-radius: 8px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.cancel-button:hover {
+  background: #f3f4f6;
+}
+
+.save-button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* スマートフォン対応 */
+@media (max-width: 600px) {
+  .modal {
+    padding: 24px 20px;
+    border-radius: 14px;
+  }
+
+  .modal h2 {
+    font-size: 21px;
+  }
+
+  .priority-select {
+    gap: 7px;
+  }
+
+  .priority-select button {
+    min-height: 66px;
+  }
+
+  .modal-actions button {
+    min-width: 0;
+    flex: 1;
+  }
+}

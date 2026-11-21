@@ -207,32 +207,34 @@ function App() {
                 aria-label={`${todo.title}を完了にする`}
               />
 
+              
               <div className="todo-content">
                 <p className="todo-title">{todo.title}</p>
 
                 <div className="todo-details">
-                  <span className="priority">
-                    優先度
+                  <div className="priority-info">
+                    <span className={`priority-label priority-${todo.priority}`}>
+                      {todo.priority === 3 ? '高' : todo.priority === 2 ? '中' : '低'}
+                    </span>
                     <span className="stars">
                       {'★'.repeat(todo.priority)}
                       {'☆'.repeat(3 - todo.priority)}
                     </span>
-                  </span>
+                  </div>
 
-                  {todo.dueDate ? (
-                    <span
-                      className={
-                        isOverdue(todo) ? 'due-date overdue' : 'due-date'
-                      }
-                    >
-                      {isOverdue(todo) ? '期限切れ：' : ''}
-                      {formatDate(todo.dueDate)}
-                    </span>
-                  ) : (
-                    <span className="no-deadline">期限なし</span>
-                  )}
+                  <div className="deadline-info">
+                    {todo.dueDate ? (
+                      <span className={isOverdue(todo) ? 'due-date overdue' : 'due-date'}>
+                        {isOverdue(todo) ? '⚠ 期限切れ：' : '📅 '}
+                        {formatDate(todo.dueDate)}
+                      </span>
+                    ) : (
+                      <span className="no-deadline">期限なし</span>
+                    )}
+                  </div>
                 </div>
               </div>
+
 
               <button
                 className="edit-button"

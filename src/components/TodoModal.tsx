@@ -82,12 +82,19 @@ function TodoModal({
                 <button
                   key={value}
                   type="button"
-                  className={priority === value ? 'selected' : ''}
+                  className={`priority-option priority-option-${value} ${
+                    priority === value ? 'selected' : ''
+                  }`}
                   onClick={() => setPriority(value)}
                   aria-label={`優先度${value}`}
                   aria-pressed={priority === value}
                 >
-                  {'★'.repeat(value)}
+                  <span className="priority-option-label">
+                    {value === 3 ? '高' : value === 2 ? '中' : '低'}
+                  </span>
+                  <span className="priority-option-stars">
+                    {'★'.repeat(value)}{'☆'.repeat(3 - value)}
+                  </span>
                 </button>
               ))}
             </div>
